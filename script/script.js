@@ -24,6 +24,4 @@ if (age > 65) {
 // calcolo del prezzodele biglietto
 const price = km * 0.21 - discount;
 let priceForHumans = Math.round(price * 100) / 100 + "€";
-console.log("Il prezzo del tuo viaggio è " + Math.round(price * 100) / 100 + "€");
-
-let generateTrigger = 
+console.log("Il prezzo del tuo viaggio è " + Math.round(price * 100) / 100 + "€"); 
