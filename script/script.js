@@ -16,51 +16,24 @@ let genera = document.getElementById("generate");
 let newTicket = document.getElementById("ticket");
 
 //template per il biglietto
-let template =
-    ` 
-<h1>IL TUO BIGLIETTO</h1>
-<div class="bg-light rounded">
-    <h4>DETTAGLIO PASSEGGERI</h4>
-    <div class="d-flex">
-        <div class="bg-secondary">
-            <h><strong>NOME PASSEGGERO</strong></h>
-            <p><strong>${nameSurnameValue}</strong></p>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <td><strong>Offerta</strong></td>
-                    <td><strong>Carrozza</strong></td>
-                    <td><strong>Codice CP</strong></td>
-                    <td><strong>Costo Biglietto</strong></td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>${ticketAge}</td>
-                    <td>5</td>
-                    <td>92911</td>
-                    <td>${priceForHumans}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-`
+
 
 // condizione di sconto
 genera.addEventListener("click", function (event) {
-    event.preventDefault;
+    event.preventDefault();
     offerValue = offer.value;
     lengthValue = parseInt(travel.value);
     nameSurnameValue = nameSurname.value;
-    if (offerValue = "3") {
+    console.log(nameSurnameValue, lengthValue, offerValue);
+
+
+    if (offerValue == "3") {
         discount = (lengthValue * 0.21) / 100 * 40;
         ticketAge = "Senior";
-    } else if (offerValue = "2") {
+    } else if (offerValue == "2") {
         discount = 0;
         ticketAge = "Normal";
-    } else if (offerValue = "1") {
+    } else if (offerValue == "1") {
         discount = (lengthValue * 0.21) / 100 * 20;
         ticketAge = "Junior";
     } else {
@@ -68,6 +41,39 @@ genera.addEventListener("click", function (event) {
     }
     const price = lengthValue * 0.21 - discount;
     priceForHumans = lengthValue.toFixed() + " €";
+
+    let template =
+        ` 
+    <h1>IL TUO BIGLIETTO</h1>
+    <div class="bg-light rounded">
+        <h4>DETTAGLIO PASSEGGERI</h4>
+        <div class="d-flex">
+            <div class="bg-secondary">
+                <h><strong>NOME PASSEGGERO</strong></h>
+                <p><strong>${nameSurnameValue}</strong></p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td><strong>Offerta</strong></td>
+                        <td><strong>Carrozza</strong></td>
+                        <td><strong>Codice CP</strong></td>
+                        <td><strong>Costo Biglietto</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${ticketAge}</td>
+                        <td>5</td>
+                        <td>92911</td>
+                        <td>${priceForHumans}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    `
+
     newTicket.innerHTML = template;
 });
 
