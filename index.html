@@ -13,13 +13,13 @@
     <section>
         <h1>CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
         <div>
-            <form class="bg-light rounded">
+            <form id="form" class="bg-light rounded">
                 <div class="row g-3">
                     <div class="col">
-                        <input value="" id="name-surname" type="text" class="form-control" placeholder="Nome e Cognome">
+                        <input id="name-surname" type="text" class="form-control" placeholder="Nome e Cognome">
                     </div>
                     <div class="col">
-                        <input value="" id="length" type="text" class="form-control" placeholder="Km da percorrere">
+                        <input id="length" type="number" class="form-control" placeholder="Km da percorrere">
                     </div>
                     <select id="offer" class="form-select col" aria-label="Default select example">
                         <option selected>Fascia d'età</option>
@@ -28,10 +28,10 @@
                         <option value="3">SENIOR (oltre i 65 anni)</option>
                     </select>
                     <div class="d-flex justify-content-center pt-3">
-                        <imput id="generate" type="submit" value="invia" class="btn btn-danger btn-sm me-2">Genera
-                        </imput>
-                        <imput id="delete" type="reset" value="cancella" class="btn btn-secondary btn-sm">Annulla
-                        </imput>
+                        <button id="generate" type="button" value="invia" class="btn btn-danger btn-sm me-2">Genera
+                        </button>
+                        <button id="delete" type="reset" value="cancella" class="btn btn-secondary btn-sm">Annulla
+                        </button>
                     </div>
                 </div>
             </form>

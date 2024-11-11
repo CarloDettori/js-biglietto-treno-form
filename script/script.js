@@ -1,40 +1,21 @@
 "use strict"
 console.clear();
 
-//- il prezzo del biglietto è definito in base ai km (0.21 € al km)
-let km = document.getElementById("length");
+// raccoglimento variabili utili
+
 let discount = 0;
-
-//- va applicato uno sconto del 20% per i minorenni
-//- va applicato uno sconto del 40% per gli over 65.
-let offer = document.getElementById("offer");
-let offerValue = offer.value;
-let nameSurname = document.getElementById("name-surname");
-let nameSurnameValue = nameSurname.value;
-let travel = document.getElementById("length");
-let lengthValue = travel.value;
+let offerValue = "";
+let nameSurnameValue = "";
+let lengthValue = "";
+let priceForHumans = "";
 let ticketAge = "";
+let offer = document.getElementById("offer");
+let nameSurname = document.getElementById("name-surname");
+let travel = document.getElementById("length");
+let genera = document.getElementById("generate");
+let newTicket = document.getElementById("ticket");
 
-
-
-//- L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
-if (offerValue = "3") {
-    discount = (lengthValue * 0.21) / 100 * 40;
-    ticketAge = "Senior"
-} else if (offerValue = "2") {
-    discount = 0;
-    ticketAge = "Normal"
-} else if (offerValue = "1") {
-    discount = (lengthValue * 0.21) / 100 * 20;
-    ticketAge = "Junior"
-} else {
-    alert("eta inserita non valida, clicca su Annulla e riprova")
-}
-
-// calcolo del prezzo del biglietto
-const price = lengthValue * 0.21 - discount;
-let priceForHumans = lengthValue + " €";
-
+//template per il biglietto
 let template =
     ` 
 <h1>IL TUO BIGLIETTO</h1>
@@ -66,10 +47,27 @@ let template =
     </div>
 </div>
 `
-let newTicket = document.getElementById("ticket")
-function ticketGeneration() {
+
+// condizione di sconto
+genera.addEventListener("click", function (event) {
+    event.preventDefault;
+    offerValue = offer.value;
+    lengthValue = parseInt(travel.value);
+    nameSurnameValue = nameSurname.value;
+    if (offerValue = "3") {
+        discount = (lengthValue * 0.21) / 100 * 40;
+        ticketAge = "Senior";
+    } else if (offerValue = "2") {
+        discount = 0;
+        ticketAge = "Normal";
+    } else if (offerValue = "1") {
+        discount = (lengthValue * 0.21) / 100 * 20;
+        ticketAge = "Junior";
+    } else {
+        alert("eta inserita non valida, clicca su Annulla e riprova");
+    }
+    const price = lengthValue * 0.21 - discount;
+    priceForHumans = lengthValue.toFixed() + " €";
     newTicket.innerHTML = template;
-}
-let genera = document.getElementById("generate")
-genera.addEventListener("submit", ticketGeneration())
-console.log(nameSurnameValue);
+});
+
